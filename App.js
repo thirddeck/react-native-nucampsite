@@ -6,8 +6,8 @@ import { ConfigureStore } from './redux/configureStore';
 const store = ConfigureStore();
 
 <Provider store={store}>
-          <Main />
-      </Provider>
+    <Main />
+</Provider>
 
 export default function App() {
   return (
