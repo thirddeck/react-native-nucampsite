@@ -5,12 +5,12 @@ import { ConfigureStore } from './redux/configureStore';
 
 const store = ConfigureStore();
 
-<Provider store={store}>
-    <Main />
-</Provider>
+
 
 export default function App() {
-  return (
-      <Main />
-  );
+    return (
+        <Provider store={store}>
+            <Main />
+        </Provider>
+    );
 }
