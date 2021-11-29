@@ -6,11 +6,11 @@ import { baseUrl } from "../shared/baseUrl";
 import Loading from './LoadingComponent';
 
 const mapStateToProps = (state) => {
-  return {
-    campsites: state.campsites,
-    promotions: state.promotions,
-    partners: state.partners,    
-  };
+    return {
+        campsites: state.campsites,
+        promotions: state.promotions,
+        partners: state.partners,    
+    };
 };
 
 function RenderItem(props) {
