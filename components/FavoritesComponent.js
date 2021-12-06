@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import {FlatList, View, Text, Alert} from "react-native";
 import {ListItem} from "react-native-elements";
+import { SwipeRow } from 'react-native-swipe-list-view';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { deleteFavorite } from '../redux/ActionCreators';
 import {connect} from "react-redux";
 import {Loading} from "./LoadingComponent";
 import {baseUrl} from "../shared/baseUrl";
-import Swipeout from "react-native-swipeout";
-import {deleteFavorite} from "../redux/ActionCreators";
 import * as Animatable from "react-native-animatable";
 
 const mapStateToProps = (state) => {
@@ -51,7 +52,7 @@ class Favorites extends Component {
             ];
 
             return (
-                <Swipeout right={rightButton} autoClose={true}>
+                <Swiperow right={rightButton} autoClose={true}>
                     <Animatable.View animation="fadeInRightBig" duration={2000}>
                         <ListItem
                             title={item.name}
@@ -63,7 +64,7 @@ class Favorites extends Component {
                             }}
                             onPress={() => navigate("CampsiteInfo", {campsiteId: item.id})}/>
                     </Animatable.View>
-                </Swipeout>
+                </Swiperow>
             );
         };
 

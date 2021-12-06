@@ -10,15 +10,15 @@ import {
     Modal,
     Alert
 } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePicker from "react-native-datetimepicker";
 import * as Animatable from "react-native-animatable";
 import * as Permissions from 'expo-permissions';
 import {Notifications} from 'expo';
-
+​
 class Reservation extends Component {
     constructor(props) {
         super(props);
-
+        ​
         this.state = {
             campers: 1,
             hikeIn: false,
@@ -26,10 +26,10 @@ class Reservation extends Component {
             showCalendar: false
         };
     }
-    static navigationOptions = {
+    ​ static navigationOptions = {
         title: "Reserve Campsite"
     };
-    handleReservation() {
+    ​ handleReservation() {
         Alert.alert(
             "Begin Search?",
             "Number of Campers: " + this.state.campers + " \nHike-in? " + this.state.hikeIn +
@@ -53,17 +53,17 @@ class Reservation extends Component {
             {cancelable: false}
         );
     }
-    resetForm() {
+    ​ resetForm() {
         this.setState(
             {campers: 1, hikeIn: false, date: new Date(), showCalendar: false}
         );
     }
-    async presentLocalNotification(date) {
+    ​ async presentLocalNotification(date) {
         function sendNotification() {
             Notifications.setNotificationHandler({
                 handleNotification: async () => ({shouldShowAlert: true})
             });
-
+            ​
             Notifications.scheduleNotificationAsync({
                 content: {
                     title: "Your Campsite Reservation Search",
@@ -72,12 +72,12 @@ class Reservation extends Component {
                 trigger: null
             });
         }
-
-        let Permissions = await Notifications.getPermissionsAsync();
-        if (!Permissions.granted) {
-            Permissions = await Notifications.requestPermissionsAsync();
+        ​
+        let permissions = await Notifications.getPermissionsAsync();
+        if (!permissions.granted) {
+            permissions = await Notifications.requestPermissionsAsync();
         }
-        if (Permissions.granted) {
+        if (permissions.granted) {
             sendNotification();
         }
     }
@@ -90,7 +90,7 @@ class Reservation extends Component {
                         <Picker
                             style={styles.formItem}
                             selectedValue={this.state.campers}
-                            onValueChange={(itemValue) => this.setState({campers: itemValue})}>
+                            onValueChange={(itemValue) => this.setState({campers: itemValue})   }>
                             <Picker.Item label="1" value="1"/>
                             <Picker.Item label="2" value="2"/>
                             <Picker.Item label="3" value="3"/>
@@ -148,7 +148,7 @@ class Reservation extends Component {
         );
     }
 }
-
+​
 const styles = StyleSheet.create({
     formRow: {
         alignItems: "center",
@@ -165,5 +165,5 @@ const styles = StyleSheet.create({
         flex: 1
     }
 });
-
+​
 export default Reservation;

@@ -4,7 +4,7 @@ import {Input, Button, Icon, CheckBox} from "react-native-elements";
 import * as SecureStore from "expo-secure-store";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
-import {createBottomTabNavigator} from "react-navigation";
+import {createBottomTabNavigator} from "react-navigation-tabs";
 import {baseUrl} from "../shared/baseUrl";
 
 class LoginTab extends Component {
